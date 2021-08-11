@@ -7,7 +7,7 @@ Action creator for ngrx store.
 ### Basic Action
 
 ```ts
-import ActionCreator from '@aiscom-llc/angular-action-creator';
+import { ActionCreator } from '@aiscom-llc/angular-action-creator';
 
 const actionCreator = new NgRxAction('Auth/API'); // Actions prefix
 
@@ -28,7 +28,7 @@ Async Action Creators are objects with properties `started`, `success` and
 `failed` whose values are action creators.
 
 ```ts
-import ActionCreator from '@aiscom-llc/angular-action-creator';
+import { ActionCreator } from '@aiscom-llc/angular-action-creator';
 
 const actionCreator = new NgRxAction('Auth/API'); // Actions type prefix
 
