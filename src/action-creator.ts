@@ -8,15 +8,11 @@ export class ActionCreator {
     this.prefix = `[${prefix}]`;
   }
 
-  createAction<T extends Record<string, any>>(type: string): TypedAction<string> {
+  createAction<T extends Record<string, any>>(type: string): any {
     return createAction(`${this.prefix} ${type}`, props<T>() as ActionCreatorProps<any>);
   }
 
-  createAsyncAction<Q extends Record<string, any>, W extends Record<string, any>, E extends Record<string, any> = ErrorState>(type: string): {
-    started: TypedAction<string>,
-    success: TypedAction<string>,
-    failed: TypedAction<string>
-  } {
+  createAsyncAction<Q extends Record<string, any>, W extends Record<string, any>, E extends Record<string, any> = ErrorState>(type: string): any {
     return {
       started: createAction(`${this.prefix} ${type}_STARTED`, props<Q>() as ActionCreatorProps<any>),
       success: createAction(`${this.prefix} ${type}_SUCCESS`, props<W>() as ActionCreatorProps<any>),
