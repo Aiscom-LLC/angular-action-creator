@@ -1,14 +1,13 @@
 import { createAction, props } from '@ngrx/store';
-import { TypedAction } from '@ngrx/store/src/models';
-import { ErrorState, ActionCreatorProps } from './interfaces';
+import { ErrorState, ActionCreatorProps, SyncActionType } from './interfaces';
 
-export class ActionCreator {
+export class ActionCreatorx {
   private prefix: string;
   constructor(prefix: string) {
     this.prefix = `[${prefix}]`;
   }
 
-  createAction<T extends Record<string, any>>(type: string): any {
+  createAction<T extends Record<string, any>>(type: string): SyncActionType<T> {
     return createAction(`${this.prefix} ${type}`, props<T>() as ActionCreatorProps<any>);
   }
 
