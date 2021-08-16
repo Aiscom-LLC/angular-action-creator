@@ -1,5 +1,15 @@
 /* eslint-disable */
-export type SyncActionType<T extends Record<string, unknown>> = ActionCreator<string, () => TypedAction<string>> | ActionCreator<string, (props: T & NotAllowedCheck<T>) => T & TypedAction<string>>;
+export type SyncActionType<T extends object> = ActionCreator<string, (props?: T & NotAllowedCheck<T>) => T & TypedAction<string>>;
+
+export type AsyncActionType<
+  Started extends Record<string, unknown>,
+  Successed extends Record<string, unknown>,
+  Failed extends Record<string, unknown>
+> = {
+  started: SyncActionType<Started>,
+  success: SyncActionType<Successed>,
+  failed: SyncActionType<Failed>
+}
 
 export interface Action {
   type: string;
